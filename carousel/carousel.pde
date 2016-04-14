@@ -19,6 +19,7 @@ boolean load = false;
 
 void setup() {
   fullScreen(P3D);
+  noCursor();
   //size(1000, 800, P3D);
 
   oscP5 = new OscP5(this, 12001);

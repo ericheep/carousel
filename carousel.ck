@@ -7,12 +7,12 @@ Hid key;
 HidMsg msg;
 int index, load;
 
-["black.png", "verde-night.jpg", "blank.png", "happy.jpg", "dogs.jpg", "amy.jpg",
-"friends.jpg", "manu.jpg", "gallagher.jpg", "jeb-whitney.jpg", "grand-canyon.jpg",
-"settlers.jpg", "brother.jpg", "colors.jpg", "davy.jpg",
-"mitsubishi.jpg", "rain.jpg", "artist.jpg"] @=> string filenames[];
+["black.png", "verde-night-1.jpg", "blank.png", "happy.jpg", "val-verde-1.jpg",
+"dogs.jpg", "amy.jpg", "friends.jpg", "manu.jpg", "gallagher.jpg", "jeb-whitney.jpg",
+"grand-canyon.jpg", "val-verde-2.jpg", "settlers.jpg", "brother.jpg", "colors.jpg", "davy.jpg",
+"mitsubishi.jpg", "rain.jpg", "artist.jpg", "verde-night-2.jpg"] @=> string filenames[];
 
-if (!key.openKeyboard(1)) me.exit();
+if (!key.openKeyboard(0)) me.exit();
 <<< "Keyboard '" + key.name() + "' is working", "" >>>;
 
 // sound stuff
