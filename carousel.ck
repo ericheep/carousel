@@ -7,8 +7,8 @@ Hid key;
 HidMsg msg;
 int index, load;
 
-["black", "blank", "amy.jpg", "karaoke.jpg",
-"friends.jpg", "manu.jpg", "gallagher.jpg", "jeb-whitney.jpg",
+["black.png", "verde-night.jpg", "blank.png", "happy.jpg", "dogs.jpg", "amy.jpg",
+"friends.jpg", "manu.jpg", "gallagher.jpg", "jeb-whitney.jpg", "grand-canyon.jpg",
 "settlers.jpg", "brother.jpg", "colors.jpg", "davy.jpg",
 "mitsubishi.jpg", "rain.jpg", "artist.jpg"] @=> string filenames[];
 

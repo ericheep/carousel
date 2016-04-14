@@ -15,19 +15,11 @@ PImage[] photos;
 PShader grain;
 PShader bleach;
 PShader technicolor;
-
 boolean load = false;
 
-String[] filenames = {
-  "black", "blank", "amy.jpg", "karaoke.jpg", "friends.jpg", "manu.jpg", 
-  "gallagher.jpg", "jeb-whitney.jpg", "settlers.jpg", 
-  "brother.jpg", "colors.jpg", "davy.jpg", "mitsubishi.jpg", 
-  "rain.jpg", "artist.jpg"
-};
-
 void setup() {
-  // fullScreen(P3D);
-  size(600, 600, P3D);
+  fullScreen(P3D);
+  //size(1000, 800, P3D);
 
   oscP5 = new OscP5(this, 12001);
   // myRemoteLocation = new NetAddress("127.0.0.1", 12000);
@@ -37,56 +29,39 @@ void setup() {
   rectMode(CENTER);
 
   bleach = loadShader("bleach.glsl");
-  bleach.set("amount", 0.5);
+  bleach.set("amount", 0.4);
 
   technicolor = loadShader("technicolor1.glsl");
-  technicolor.set("amount", 0.75);
+  technicolor.set("amount", 0.8);
 
   grain = loadShader("grain.glsl");
-  grain.set("grainamount", 0.025);
-
-  photos = new PImage[filenames.length];
-
-  /*for (int i = 0; i < filenames.length; i++) {
-    if (filenames[index] != "black" && filenames[index] != "blank") {
-      photos[i] = loadImage(filenames[i]);
-    }
-  }*/
+  grain.set("grainamount", 0.005);
 }
 
 void draw() {
   background(0);
 
   if (load) {
-    // blank
-    if (index == 1) {
-      fill(255, 255, 255);
-      rect(width/2, height/2, height, height, 25);
-      blurryRectangle(height, height);
-    } else if (index != 0) {
-      println(filenames[index]);
-      grain.set("dimensions", float(photos[index].width), float(photos[index].height));
+    grain.set("dimensions", float(photos[index].width), float(photos[index].height));
 
-      if (photos[index].width > photos[index].height) {
-        aspect = float(photos[index].height)/photos[index].width;
-        image(photos[index], width * 0.5, height * 0.5, width, height * aspect);
+    if (photos[index].width > photos[index].height) {
+      aspect = float(photos[index].height)/photos[index].width;
+      image(photos[index], width * 0.5, height * 0.5, height, height * aspect);
 
-        // rounded blurry corners
-        noFill();
-        blurryRectangle(width, height * aspect);
-      } else {
-        aspect = float(photos[index].width)/photos[index].height;
-        image(photos[index], width * 0.5, height * 0.5, width * aspect, height);
-
-        // rounded blurrly corners
-        noFill();
-        blurryRectangle(width * aspect, height);
-      }
-
-      filter(bleach);
-      filter(grain);
-      filter(technicolor);
+      // rounded blurry corners
+      noFill();
+      blurryRectangle(height, height * aspect);
+    } else {
+      aspect = float(photos[index].width)/photos[index].height;
+      image(photos[index], width * 0.5, height * 0.5, height * aspect, height);
+      // rounded blurrly corners
+      noFill();
+      blurryRectangle(height * aspect, height);
     }
+
+    filter(bleach);
+    filter(grain);
+    filter(technicolor);
   }
 }
 
